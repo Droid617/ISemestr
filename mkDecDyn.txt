@@ -1,0 +1,26 @@
+DecDyn: decoder.o libheader.so
+        gcc -o DecDyn decoder.o -L. -lheader -Wl,-rpath,.
+decoder.o: decoder.c
+        gcc -c decoder.c
+libheader.so:  AllSpaces.o Caesar.o Filtr.o onlyLetters.o onlyNumber.o rgstr.o StartEndSpaces.o Xor.o
+        gcc -shared  -o libheader.so  AllSpaces.o Caesar.o Filtr.o onlyLetters.o onlyNumber.o rgstr.o StartEndSpaces.o Xor.o
+AllSpaces.o: AllSpaces.c
+        gcc -c -fPIC AllSpaces.c
+Caesar.o: Caesar.c
+        gcc -c -fPIC Caesar.c
+Filtr.o: Filtr.c
+        gcc -c  -fPIC Filtr.c
+onlyLetters.o: onlyLetters.c
+        gcc -c -fPIC onlyLetters.c
+onlyNumber.o: onlyNumber.c
+        gcc -c  -fPIC onlyNumber.c
+rgstr.o: rgstr.c
+        gcc -c  -fPIC rgstr.c
+StartEndSpaces.o: StartEndSpaces.c
+        gcc -c  -fPIC StartEndSpaces.c
+Xor.o: Xor.c
+        gcc -c  -fPIC Xor.c
+clean:
+        rm -f *.o *.so DecDyn
+
+

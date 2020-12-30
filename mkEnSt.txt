@@ -1,0 +1,26 @@
+EnSt: encoder.o libheader.a
+	gcc -o EnSt encoder.o -L. -lheader
+encoder.o: encoder.c
+	gcc -c encoder.c
+libheader.a: AllSpaces.o Caesar.o Filtr.o onlyLetters.o onlyNumber.o rgstr.o StartEndSpaces.o Xor.o
+	ar cr libheader.a AllSpaces.o Caesar.o Filtr.o onlyLetters.o onlyNumber.o rgstr.o StartEndSpaces.o Xor.o
+AllSpaces.o: AllSpaces.c
+	gcc -c AllSpaces.c
+Caesar.o: Caesar.c
+	gcc -c Caesar.c
+Filtr.o: Filtr.c
+	gcc -c Filtr.c
+onlyLetters.o: onlyLetters.c
+	gcc -c onlyLetters.c
+onlyNumber.o: onlyNumber.c
+	gcc -c onlyNumber.c
+rgstr.o: rgstr.c
+	gcc -c rgstr.c
+StartEndSpaces.o: StartEndSpaces.c
+	gcc -c StartEndSpaces.c
+Xor.o: Xor.c
+	gcc -c Xor.c
+clean:
+	rm -f *.o *.a EnSt
+
+
